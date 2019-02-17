@@ -1,0 +1,55 @@
+page-job-form {
+    .custom-add-btn {
+        width: 120px;
+        font-size: 14px;
+        color: color($colors, primary);
+        margin: 5px auto 15px;
+        text-align: center;
+        ion-icon {
+            vertical-align: -1px;
+            font-weight: 600;
+        }
+        padding: 10px 0;
+    };
+
+    .date {
+        font-size: 14px;
+        color: #333;
+    }
+
+    .button-ios {
+        font-size: 14px;
+        height: 40px;
+        padding: 10px;
+        margin: 0;
+    }
+
+    .man-count {
+        font-size: 12px;
+        color: #666;
+    }
+
+    .plan-price {
+        padding-left: 5px;
+        color: color($colors, primary);
+        .label {
+            font-size: 12px;
+            color: #999;
+        }
+    }
+
+    .list-ios > .item-block:first-child {
+        border-top-color: #eee;
+    }
+
+    .list-ios > .item-block:last-child {
+        border-bottom-color: #eee;
+    }
+
+    // .card-ios .item-ios.item-block .item-inner {
+    //     border-bottom: 0.55px solid #eee;
+    //     &:last-child {
+    //         border-bottom: 0!important;
+    //     }
+    // }
+}

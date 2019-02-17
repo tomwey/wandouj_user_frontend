@@ -1,0 +1,102 @@
+// http://ionicframework.com/docs/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+.content {
+    background-color: rgb(242,242,242);
+}
+
+.required {
+    // padding: 5px;
+    color: color($colors, primary);
+    font-size: 14px;
+    padding-right: 5px;
+    font-weight: 700;
+    line-height: 14px;
+    vertical-align: -2px;
+}
+
+.tabs-ios .tabbar {
+    // border-top: 0;
+    border-color: rgb(235,235,235);
+    background-color: white;
+}
+
+.card-ios {
+    box-shadow: none;
+}
+
+.loading-wrapper {
+    background: rgba(0,0,0,0.6)!important;
+    width: 120px;
+    height: 120px;
+    padding: 0!important;
+    color: white!important;
+    display: block!important;
+    text-align: center;
+    border-radius: 6px!important;
+    .loading-spinner {
+        margin: 35px 0 20px 0;
+        // ion-spinner * {
+        //     stroke: rgba(255,255,255,0.7);
+        //   }
+
+        ion-spinner {
+            * {
+              stroke: #fff;
+            }
+        
+            &.spinner-circles circle,
+            &.spinner-bubbles circle,
+            &.spinner-dots circle {
+              fill: #fff;
+            }
+          }
+    }
+    .loading-content {
+        margin-left: 0!important;
+        width: 100%;
+        text-align: center;
+        font-size: 12px;
+        color: rgba(255,255,255,0.9);
+        // font-weight: normal;
+        // font-family: 'PingFang SC', Arial, Helvetica, sans-serif;
+    }
+}
+
+.empty-error-box {
+    // display: flex;
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 120px;
+    text-align: center;
+    padding: 60px 30px;
+    color: #666;
+    font-size: 14px;
+    border: 2px dashed #ddd;
+    img {
+        max-width: 32px;
+    }
+}
+
+// .toolbar-title-ios {
+//     font-weight: normal;
+//     color: #333!important;
+// }
+
+// .vg-buffering .bufferingContainer {
+//     margin-top: -25px;
+// }

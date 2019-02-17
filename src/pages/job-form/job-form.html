@@ -1,0 +1,44 @@
+<!--
+  Generated template for the JobFormPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-border>
+
+  <ion-navbar color="primary">
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>基本信息</ion-card-header>
+    <form-fields [controls]="baseControls" (onControlSelect)="controlSelected($event);"></form-fields>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>兼职代理提成设置</ion-card-header>
+    <form-fields [controls]="channelEarnControls" (onControlSelect)="controlSelected($event);"></form-fields>
+  </ion-card>
+  <!-- <ion-card>
+    <ion-card-header>兼职计划</ion-card-header>
+    <ion-list>
+      <ion-item *ngFor="let plan of jobPlans">
+        <h2 class="date">{{plan.work_date}}<span class="plan-price"><span class="label">当天价格:</span>
+            {{plan.price || "正常兼职价格"}}</span></h2>
+        <p class="man-count">兼职总人数: {{plan.total_count}}<br>已报名人数: {{plan.joined_count}}</p>
+        <ion-note item-right>
+          <button ion-button clear (click)="editPlan(plan);">编辑</button><br>
+          <button ion-button clear color="danger" (click)="deletePlan(plan);">删除</button>
+        </ion-note>
+      </ion-item>
+    </ion-list>
+    <div class="custom-add-btn" tappable (click)="newPlan();">
+      <ion-icon name="ios-add-circle-outline"></ion-icon> 新增兼职计划
+    </div>
+  </ion-card> -->
+  <div padding>
+    <button ion-button block (click)="save()">保存</button>
+  </div>
+</ion-content>
