@@ -20,11 +20,14 @@ import { AppManager } from '../provider/AppManager';
 import { iOSFixedScrollFreeze } from '../provider/iOSFixedScrollFreeze';
 
 import { PipesModule } from '../pipes/pipes.module';
+import { ComponentsModule } from '../components/components.module';
+import { TabsPage } from '../pages/tabs/tabs';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
+    TabsPage,
     LoginPage
   ],
   imports: [
@@ -35,12 +38,14 @@ import { PipesModule } from '../pipes/pipes.module';
       mode: 'ios',
       backButtonText: '',
     }),
-    PipesModule
+    PipesModule,
+    ComponentsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
+    TabsPage,
     LoginPage,
   ],
   providers: [

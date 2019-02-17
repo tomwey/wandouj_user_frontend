@@ -6,6 +6,7 @@ import { Users } from '../../provider/Users';
 import { Tools } from '../../provider/Tools';
 import { iOSFixedScrollFreeze } from '../../provider/iOSFixedScrollFreeze';
 import { HomePage } from '../home/home';
+import { TabsPage } from '../tabs/tabs';
 // import { TabsPage } from '../tabs/tabs';
 // import { SettingPage } from '../setting/setting';
 // import { Utils } from '../../provider/Utils';
@@ -29,12 +30,25 @@ export class LoginPage {
     password: ''
   };
 
-  codeBtnData: any = {
-    text: '获取验证码',
-    started: false,
-    timer: null,
-    seconds: 59,
-  };
+  controls: any = [
+    {
+      id: 'mobile',
+      name: '手机号',
+      type: 2,
+      subtype: 'tel',
+      required: true
+    },
+    {
+      id: 'code',
+      name: '验证码',
+      type: 20,
+      required: true,
+      mobile_field: "mobile",
+      seconds: 59,
+      get_code_text: "获取验证码",
+      code_type: 1
+    }
+  ];
 
   @ViewChild(Content) content: Content;
 
@@ -56,16 +70,15 @@ export class LoginPage {
     // this.loadUserAgreement();
   }
 
-  updatePassword() {
-    this.navCtrl.push('UpdatePasswordPage');
-  }
-
   doLogin() {
-    this.users.Login(this.user.mobile, this.user.password)
+    const mobile = this.controls[0].value;
+    const code = this.controls[1].value;
+
+    this.users.Login(mobile, code)
       .then(data => {
-        // console.log(data);
+        console.log(data);
         // this.checkProfile();
-        this.app.getRootNavs()[0].setRoot(HomePage);
+        this.app.getRootNavs()[0].setRoot(TabsPage);
       })
       .catch(error => {
         this.tools.showToast(error);
@@ -86,39 +99,5 @@ export class LoginPage {
   //       this.tools.showToast(error.message || '服务器出错了');
   //     });
   // }
-
-  getCode() {
-    if (this.codeBtnData.started) return;
-
-    this.users.GetCode(this.user.mobile)
-      .then(data => {
-        // console.log(data);
-        this.startTimer();
-      })
-      .catch(error => {
-        // console.log(error);
-        this.tools.showToast(error.message || '服务器出错了');
-      });
-  }
-
-  startTimer() {
-    this.codeBtnData.started = true;
-    this.codeBtnData.text = `${this.codeBtnData.seconds}秒后重新获取`;
-
-    if (!this.codeBtnData.timer) {
-      this.codeBtnData.timer = setInterval(() => {
-        this.codeBtnData.seconds -= 1;
-        if (this.codeBtnData.seconds <= 0) {
-          clearInterval(this.codeBtnData.timer);
-          this.codeBtnData.timer = null;
-          this.codeBtnData.started = false;
-          this.codeBtnData.seconds = 59;
-          this.codeBtnData.text = '获取验证码';
-        } else {
-          this.codeBtnData.text = `${this.codeBtnData.seconds}秒后重新获取`;
-        }
-      }, 1000);
-    }
-  }
 
 }

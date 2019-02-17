@@ -14,6 +14,7 @@ import { Tools } from './Tools';
 // 正式服务器和账号
 const API_HOST: string = "http://jobs.afterwind.cn/api/v1";
 const API_KEY: string = "4d7295cda1e6dc65dfcf4466db008a8f";
+const GWC_API_KEY: string = "63a2cc918b179eae4b2859e36b501afd";
 
 // 测试账号和测试服务器
 // const API_HOST: string = "http://0.0.0.0:3000/api/v1";
@@ -55,7 +56,7 @@ export class ApiService {
 
     // 设置安全参数
     searchParams.set('i', i.toString());
-    searchParams.set('ak', this.generateAccessKey(i));
+    searchParams.set('ak', this.generateAccessKey(i, uri));
 
     // 合并传进来的参数
     for (let param in params) {
@@ -101,7 +102,7 @@ export class ApiService {
 
     // 组装参数
     let i = new Date().getTime();
-    let ak = this.generateAccessKey(i);
+    let ak = this.generateAccessKey(i, uri);
 
     params.i = i;
     params.ak = ak;
@@ -138,7 +139,7 @@ export class ApiService {
 
     // 组装参数
     let i = new Date().getTime();
-    let ak = this.generateAccessKey(i);
+    let ak = this.generateAccessKey(i, uri);
 
     body.append('i', i.toString());
     body.append('ak', ak);
@@ -160,7 +161,7 @@ export class ApiService {
 
     // 组装参数
     let i = new Date().getTime();
-    let ak = this.generateAccessKey(i);
+    let ak = this.generateAccessKey(i, uri);
 
     body.append('i', i.toString());
     body.append('ak', ak);
@@ -192,8 +193,8 @@ export class ApiService {
   }
 
   // 生成MD5
-  private generateAccessKey(i): string {
-    return Md5.hashStr(API_KEY + i.toString(), false).toString();
+  private generateAccessKey(i, uri): string {
+    return Md5.hashStr(uri === "auth_codes" ? API_KEY : GWC_API_KEY + i.toString(), false).toString();
   } // end generate access key
 
   // 处理请求成功的回调

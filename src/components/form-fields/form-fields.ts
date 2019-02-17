@@ -49,7 +49,7 @@ export class FormFieldsComponent {
   }
 
   removeMe(ev: Event, item, it) {
-    console.log(123);
+    // console.log(123);
     ev.stopPropagation();
     const arr = item.value || [];
     const index = arr.indexOf(it);

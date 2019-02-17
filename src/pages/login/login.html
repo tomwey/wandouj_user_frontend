@@ -18,17 +18,18 @@
 
     <img src="assets/imgs/logo.png" class="logo">
     <ion-card>
-      <ion-card-header class="slogan">人力公司登录</ion-card-header>
+      <ion-card-header class="slogan">用户登录</ion-card-header>
       <!-- <ion-list> -->
-      <ion-item class="custom-item">
+      <!-- <ion-item class="custom-item">
         <ion-label>手机号</ion-label>
         <ion-input type="number" [(ngModel)]="user.mobile" pattern="[0-9]*" placeholder="输入手机号"></ion-input>
-      </ion-item>
+      </ion-item> -->
+      <form-fields [controls]="controls"></form-fields>
 
-      <ion-item class="custom-item">
+      <!-- <ion-item class="custom-item">
         <ion-label>密码</ion-label>
         <ion-input type="password" [(ngModel)]="user.password" placeholder="输入密码"></ion-input>
-      </ion-item>
+      </ion-item> -->
       <!-- <ion-item>
         <ion-label>验证码</ion-label>
         <ion-input type="number" [(ngModel)]="user.code" pattern="[0-9]*" placeholder="输入验证码"></ion-input>
@@ -38,8 +39,8 @@
       <!-- </ion-list> -->
 
       <div padding>
-        <button ion-button block (click)="doLogin();" [disabled]="!user.mobile || !user.password">登录</button>
-        <p class="forget-password" tappable (click)="updatePassword();">忘记密码？</p>
+        <button ion-button block (click)="doLogin();" [disabled]="!controls[0].value || !controls[1].value">登录</button>
+        <p class="user-agreements">登录即表示同意<span class="agreement" tappable (click)="openPage();">《用户使用协议》</span></p>
       </div>
     </ion-card>
 

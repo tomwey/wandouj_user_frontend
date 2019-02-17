@@ -17,7 +17,7 @@ export class Users {
      * 获取token key
      * */
     _getTokenKey() {
-        return `token-${Utils.getQueryString("mid")}`;
+        return `token`;
     }
     /**
      * 获取用户的登录TOKEN
@@ -467,9 +467,18 @@ export class Users {
         });
     }
 
-    Login(mobile, password) {
+    private _getKeyParam() {
+        const value = Utils.getQueryString("key");
+        return value;
+    }
+
+    Login(mobile, code) {
         return new Promise((resolve, reject) => {
-            this.api.POST('manager/admin/login', { mobile: mobile, password: password, merch_id: Utils.getQueryString("mid") })
+            this.api.POST('gwc/user/login', {
+                mobile: mobile,
+                code: code,
+                key: this._getKeyParam()
+            })
                 .then(data => {
                     // console.log(data);
                     if (data && data['data']) {
