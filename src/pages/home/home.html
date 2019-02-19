@@ -29,7 +29,8 @@
     <div class="dates-bar">
       <div class="date-item" tappable (click)="selectDate(date);" *ngFor="let date of jobDates;let i = index;">
         <div class="weekday">{{ i == 0 ? "今天" : date.name}}</div>
-        <div class="day-wrap" [class.has-job]="date.has_job" [class.has-apply]="date.has_apply">
+        <div class="day-wrap" [class.selected]="date.date == currentDate" [class.has-job]="date.has_job"
+          [class.has-apply]="date.has_apply">
           <div class="day">{{date.day}}</div>
           <div class="dot"></div>
         </div>
@@ -40,7 +41,11 @@
   <div class="my-jobs" *ngIf="my_jobs.length > 0">
     <h2 class="title">我的工作</h2>
     <div class="job-list">
-
+      <ion-list>
+        <div *ngFor="let apply of my_jobs" tappable (click)="selectJob(apply.job);">
+          <job-item [job]="apply.job"></job-item>
+        </div>
+      </ion-list>
     </div>
   </div>
   <div class="jobs" *ngIf="jobs">
@@ -54,20 +59,4 @@
     </div>
   </div>
 
-  <!-- <div class="splitor"></div> -->
-  <!-- <div class="features">
-    <div class="empty-error-box" *ngIf="!!error">
-      {{error}}
-    </div>
-    <ion-row *ngIf="features.length > 0">
-      <ion-col col-4 *ngFor="let feature of features">
-        <div class="feature" tappable (click)="select(feature);">
-          <div class="icon">
-            <img [src]="feature.icon">
-          </div>
-          <div class="name">{{feature.name}}</div>
-        </div>
-      </ion-col>
-    </ion-row>
-  </div> -->
 </ion-content>

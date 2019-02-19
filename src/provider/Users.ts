@@ -48,10 +48,10 @@ export class Users {
         return this.api.GET('u/auth', { url: url });
     }
 
-    GetUserHomeData() {
+    GetUserHomeData(work_date) {
         return new Promise((resolve, reject) => {
             this.token().then(token => {
-                this.api.GET('gwc/user/home', { token: token, key: this._getKeyParam() }, "加载中...", true)
+                this.api.GET('gwc/user/home', { token: token, work_date: work_date, key: this._getKeyParam() }, "加载中...", true)
                     .then(res => {
                         resolve(res);
                     })

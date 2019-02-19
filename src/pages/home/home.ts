@@ -29,6 +29,8 @@ export class HomePage {
 
   jobDates: any = [];
 
+  currentDate: any = null;
+
   // @ViewChild('slides') slides: Slides;
   @ViewChild(Content) content: Content;
 
@@ -55,8 +57,8 @@ export class HomePage {
     window.open("tel:" + phone);
   }
 
-  loadHomeData() {
-    this.users.GetUserHomeData()
+  loadHomeData(work_date = null) {
+    this.users.GetUserHomeData(work_date)
       .then(data => {
         console.log(data);
         const result = data['data'];
@@ -73,7 +75,17 @@ export class HomePage {
   selectDate(date) {
     if (!(date.has_job || date.has_apply)) return;
 
-    console.log(date);
+    if (this.currentDate == date.date) {
+      this.currentDate = null;
+    } else {
+      this.currentDate = date.date;
+    }
+
+    this.loadHomeData(this.currentDate);
+  }
+
+  selectJob(job) {
+
   }
 
 }

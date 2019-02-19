@@ -88,6 +88,17 @@ page-home {
                     // margin-top: 10px;
                     margin: 0 auto;
                     color: #999;
+                    
+                    &.selected {
+                        background: color($colors, primary);
+                        .day {
+                            color: #fff!important;
+                        }
+                        .dot {
+                            background: #fff!important;
+                        }
+                    }
+
                     .day {
                         // color: #333;
                         margin-top: 1px;
@@ -131,10 +142,10 @@ page-home {
         }
     }
 
-    .splitor {
-        height: 5px;
-        background: #f7f7f7;
-    }
+    // .splitor {
+    //     height: 5px;
+    //     background: #f7f7f7;
+    // }
 
     .my-jobs,.jobs {
         background: #fff;
