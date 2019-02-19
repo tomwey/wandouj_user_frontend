@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { /*IonicPage, */NavController, NavParams, Content } from 'ionic-angular';
+import { /*IonicPage, */NavController, NavParams, Content, App } from 'ionic-angular';
 // import { ApiService } from '../../provider/api-service';
 import { iOSFixedScrollFreeze } from '../../provider/iOSFixedScrollFreeze';
 import { Users } from '../../provider/Users';
@@ -36,7 +36,7 @@ export class HomePage {
 
   constructor(public navCtrl: NavController,
     // private api: ApiService,
-    // private app: App,
+    private app: App,
     private users: Users,
     // private tools: Tools,
     private iosFixed: iOSFixedScrollFreeze,
@@ -85,7 +85,7 @@ export class HomePage {
   }
 
   selectJob(job) {
-
+    this.app.getRootNavs()[0].push('JobDetailPage', { job: job });
   }
 
 }

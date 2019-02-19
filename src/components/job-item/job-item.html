@@ -8,6 +8,7 @@
   <p class="work-time">
     <ion-icon name="ios-time-outline"></ion-icon>{{job.work_times}}
   </p>
+  <span class="special" *ngIf="!!job.special" text-wrap>{{job.special}}</span>
   <div item-right style="text-align: right;">
     <p class="price">
       <ion-icon name="icon_wallet"></ion-icon><br><span class="money">{{job.price}}</span><span

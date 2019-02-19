@@ -8,6 +8,18 @@ job-item {
         color: #333;
     }
 
+    .special {
+        display:inline-block;
+        font-size: 12px;
+        background: rgb(240, 250, 242);
+        height: 24px;
+        line-height: 24px;
+        border-radius: 12px;
+        padding: 0 10px;
+        color: color($colors,primary);
+        margin-top: 5px;
+    }
+
     .project-name, .work-date, .work-time {
         font-size: 14px;
         color: #999;
