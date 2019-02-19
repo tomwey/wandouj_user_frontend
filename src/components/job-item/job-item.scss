@@ -13,6 +13,20 @@ job-item {
         color: #999;
     }
 
+    .work-date {
+        margin-top: 5px;
+    }
+
+    .work-date, .work-time {
+        ion-icon {
+            font-size: 16px;
+            vertical-align: -1px;
+            margin-right: 5px;
+            color: #999;
+            font-weight: 700;
+        }
+    }
+
     .price {
         font-size: 16px;
         font-family: 'PingFang SC', Arial, Helvetica, sans-serif;
