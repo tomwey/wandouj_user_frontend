@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, App } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, App, Events } from 'ionic-angular';
 import { Users } from '../../provider/Users';
-import { LoginPage } from '../login/login';
+// import { LoginPage } from '../login/login';
+import { Tools } from '../../provider/Tools';
 
 /**
  * Generated class for the SettingPage page.
@@ -17,41 +18,48 @@ import { LoginPage } from '../login/login';
 })
 export class SettingPage {
 
+  user: any = null;
+
   constructor(public navCtrl: NavController,
-    private alertCtrl: AlertController,
+    // private alertCtrl: AlertController,
     private users: Users,
     private app: App,
+    private tools: Tools,
+    private events: Events,
     public navParams: NavParams) {
+    this.events.subscribe("reloadprofile", () => {
+      this.loadProfile();
+    });
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SettingPage');
+    // console.log('ionViewDidLoad SettingPage');
+    setTimeout(() => {
+      this.loadProfile();
+    }, 100);
   }
 
-  logout() {
-    this.alertCtrl.create({
-      title: "退出登录",
-      subTitle: "您确定吗？",
-      buttons: [
-        {
-          role: "Cancel",
-          text: "取消"
-        },
-        {
-          text: "确定",
-          handler: () => {
-            this.users.logout()
-              .then(data => {
-                this.app.getRootNavs()[0].setRoot(LoginPage);
-              });
-          }
-        }
-      ]
-    }).present();
+  loadProfile() {
+    this.users.GetUserProfile(true, "加载中...")
+      .then(data => {
+        // this.fillControls(data['data'] || {});
+        this.user = data['data'];
+      })
+      .catch(error => {
+        this.tools.showToast(error.message || "服务器出错了~");
+      });
   }
 
-  updatePassword() {
-    this.navCtrl.push("UpdatePasswordPage", { account: this.navParams.data.account });
+  gotoProfile() {
+    this.app.getRootNavs()[0].push('ProfilePage', { profile: this.user });
+  }
+
+  gotoAbout() {
+
+  }
+
+  callPhone() {
+    window.open("tel:18048553687");
   }
 
 }

@@ -14,12 +14,20 @@
 
 
 <ion-content>
+  <div class="user-caption" *ngIf="!!user">
+    <img src="assets/imgs/default_avatar.png" class="avatar">
+    <p class="mobile">{{user.mobile}}</p>
+    <p class="score">信用分：{{user.score}}</p>
+  </div>
   <ion-list>
-    <button ion-item (click)="updatePassword();">
-      修改密码
+    <button ion-item (click)="gotoProfile();">
+      <ion-icon name="ios-settings-outline" item-left></ion-icon>个人资料
     </button>
-    <button ion-item (click)="logout();">
-      退出登录
+    <button ion-item (click)="gotoAbout();">
+      <ion-icon name="ios-information-circle-outline" item-left></ion-icon> 关于
+    </button>
+    <button ion-item (click)="callPhone();">
+      <ion-icon name="ios-headset-outline" item-left></ion-icon>联系我们
     </button>
   </ion-list>
 </ion-content>

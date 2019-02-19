@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, App, ModalController, Events } from 'ionic-angular';
 import { Users } from '../../provider/Users';
 import { Tools } from '../../provider/Tools';
 import { TabsPage } from '../tabs/tabs';
@@ -29,7 +29,8 @@ export class ProfilePage {
       id: 'mobile',
       name: '联系电话',
       type: 2,
-      subtype: 'tel'
+      subtype: 'tel',
+      placeholder: "如果不填，默认为登录手机"
     },
     {
       id: 'sex',
@@ -87,28 +88,22 @@ export class ProfilePage {
       type: 2
     }
   ];
+
+  profile: any = null;
   constructor(public navCtrl: NavController,
     private users: Users,
     private tools: Tools,
     private app: App,
+    private events: Events,
+    private modalCtrl: ModalController,
     public navParams: NavParams) {
+
+    this.profile = this.navParams.data.profile;
+    this.fillControls(this.profile);
   }
 
   ionViewDidLoad() {
     // console.log('ionViewDidLoad ProfilePage');
-    setTimeout(() => {
-      this.loadProfile();
-    }, 300);
-  }
-
-  loadProfile() {
-    this.users.GetUserProfile(true, "加载中...")
-      .then(data => {
-        this.fillControls(data['data'] || {});
-      })
-      .catch(error => {
-        this.tools.showToast(error.message || "服务器出错了~");
-      });
   }
 
   private fillControls(profile) {
@@ -118,8 +113,34 @@ export class ProfilePage {
         if (control.id == "mobile") {
           control.value = profile.phone;
         }
+
+        if (control.id == "current_pay_name") {
+          control.value = profile["pay_name"];
+        }
+
+        if (control.id == "current_pay_account") {
+          control.value = profile["pay_account"];
+        }
       });
     }
+  }
+
+  controlSelected(control) {
+    let modal = this.modalCtrl.create('CommSelectPage', {
+      selectedItems: control.value ? [control.value] : [],
+      title: '选择兼职项目', data: [{ label: "男", value: "男" }, { label: "女", value: "女" }]
+    });
+    modal.onDidDismiss((res) => {
+      // console.log(res);
+      if (!res) return;
+
+      // this.selectedItems = res;
+      if (res.length > 0) {
+        // console.log(res[0]);
+        control.value = res[0];
+      }
+    });
+    modal.present();
   }
 
   save() {
@@ -131,13 +152,18 @@ export class ProfilePage {
         return;
       }
 
-      params[control.id] = control.value;
+      if (control.type == 4) {
+        params[control.id] = control.value ? control.value.value : "";
+      } else {
+        params[control.id] = control.value;
+      }
     }
 
     this.users.SaveProfile(params)
       .then(data => {
         // this.tools.showToast("保存成功");
-        if (this.navParams.data.from) {
+        if (this.profile) {
+          this.events.publish("reloadprofile");
           this.navCtrl.pop();
         } else {
           this.app.getRootNavs()[0].setRoot(TabsPage);
