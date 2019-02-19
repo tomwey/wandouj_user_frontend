@@ -482,8 +482,8 @@ export class Users {
     SaveProfile(params) {
         return new Promise((resolve, reject) => {
             this.token().then(token => {
-                params['token'] = token;
-                this.api.POST('user/save_profile', params)
+                // params['token'] = token;
+                this.api.POST('gwc/user/save_profile', { token: token, payload: JSON.stringify(params) })
                     .then(res => {
                         resolve(res);
                     })

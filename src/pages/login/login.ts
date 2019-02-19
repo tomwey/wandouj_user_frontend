@@ -78,7 +78,11 @@ export class LoginPage {
       .then(data => {
         console.log(data);
         // this.checkProfile();
-        this.app.getRootNavs()[0].setRoot(TabsPage);
+        if (!data['pid']) {
+          this.app.getRootNavs()[0].setRoot('ProfilePage');
+        } else {
+          this.app.getRootNavs()[0].setRoot(TabsPage);
+        }
       })
       .catch(error => {
         this.tools.showToast(error);
