@@ -85,6 +85,12 @@ export class JobDetailPage {
       .then(data => {
         this.tools.showToast("提交成功");
         this.loadJob();
+        if (action == 'create') {
+          if (this.navParams.data.reload) {
+            this.navParams.data.reload();
+          }
+          // this.events.publish('needreload');
+        }
       })
       .catch(error => {
         this.tools.showToast(error.message || "提交出错了，请重试！");
