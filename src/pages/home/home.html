@@ -6,84 +6,27 @@
 -->
 
 <ion-content>
-  <div class="caption">
+  <div class="caption" *ngIf="company">
     <div class="company">
       <div class="avatar">
-        <img [src]="company.avatar">
+        <img [src]="company.logo">
       </div>
       <div class="info">
-        <h2 class="comp-name">{{company.name}}</h2>
+        <h2 class="comp-name">{{company.alias_name}}</h2>
         <div class="accounts">
-          <p class="name">账号名字：{{company.account.name}}</p>
-          <p class="mobile">登录手机：{{company.account.mobile}}</p>
-          <p class="account-type" *ngIf="company.account.is_admin != null && company.account.is_admin != undefined">
-            {{company.account.is_admin ? "管理员账号" : "普通账号"}}</p>
+          <p class="name">公司名字：{{company.name}}</p>
+          <p class="mobile">联系电话：{{company.phone}}&emsp;<span class="phone-btn" tappable
+              (click)="callPhone(company.phone);">
+              <ion-icon name="ios-call-outline"></ion-icon>
+            </span></p>
         </div>
       </div>
     </div>
-    <div class="other-infos">
-      <ion-row>
-        <ion-col col-7>
-          <div class="vip-time">
-            <div class="label">账号到期日期</div>
-            <div class="value">{{company.vip_time}}<span class="left-days">{{company.left_days}}</span></div>
-          </div>
-        </ion-col>
-        <ion-col col-5>
-          <div class="balance">
-            <div class="label">余额(元)</div>
-            <div class="value">{{company.balance}}</div>
-          </div>
-        </ion-col>
-      </ion-row>
-    </div>
-    <!-- <div class="stats">
-      <ion-row>
-        <ion-col col-3>
-          <div class="stat-item">
-            <p class="value"><span class="digit">{{statData.totalJobs}}</span><span class="unit">个</span></p>
-            <p class="label">兼职</p>
-          </div>
-        </ion-col>
-        <ion-col col-3>
-          <div class="stat-item">
-            <p class="value"><span class="digit">{{statData.totalJobUsers}}</span><span class="unit">人</span></p>
-            <p class="label">兼职用户</p>
-          </div>
-        </ion-col>
-        <ion-col col-3>
-          <div class="stat-item">
-            <p class="value"><span class="digit">{{statData.totalEarn}}</span><span class="unit">元</span></p>
-            <p class="label">总收益</p>
-          </div>
-        </ion-col>
-        <ion-col col-3>
-          <div class="stat-item">
-            <p class="value"><span class="digit">{{statData.agentEarn}}</span><span class="unit">元</span></p>
-            <p class="label">代理收益</p>
-          </div>
-        </ion-col>
-      </ion-row>
-    </div> -->
+
   </div>
-  <!-- <div class="other-info">
-    <ion-row>
-      <ion-col col-6>
-        <div class="info-item">
-          <p class="label">账号过期日期</p>
-          <p class="value">{{company.vip_time}}<span class="left-days">{{company.left_days}}</span></p>
-        </div>
-      </ion-col>
-      <ion-col col-6>
-        <div class="info-item">
-          <p class="label">余额 (元)</p>
-          <p class="value">{{company.balance}}</p>
-        </div>
-      </ion-col>
-    </ion-row>
-  </div> -->
-  <div class="splitor"></div>
-  <div class="features">
+
+  <!-- <div class="splitor"></div> -->
+  <!-- <div class="features">
     <div class="empty-error-box" *ngIf="!!error">
       {{error}}
     </div>
@@ -97,5 +40,5 @@
         </div>
       </ion-col>
     </ion-row>
-  </div>
+  </div> -->
 </ion-content>

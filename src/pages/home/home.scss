@@ -1,7 +1,4 @@
 page-home {
-    .content {
-        background: #fff;
-    }
     .caption {
         background: color($colors, primary);
         padding: 15px;
@@ -14,13 +11,14 @@ page-home {
         .company {
             display: flex;
             .avatar {
-                flex: 0 0 60px;
-                width: 60px;
-                height: 60px;
+                flex: 0 0 66px;
+                width: 66px;
+                height: 66px;
                 img {
                     width: 100%;
                     height: 100%;
                     border-radius: 50%;
+                    // border: 4px solid rgb(216, 144, 35);
                 }
             }
             .info {
@@ -30,128 +28,32 @@ page-home {
                 .comp-name {
                     font-size: 14px;
                     font-weight: 700;
-                    margin-top: 3px;
+                    margin-top: 5px;
                 }
 
                 .accounts {
                     font-size: 12px;
-                    margin-top: 5px;
+                    margin-top: 10px;
                     position: relative;
                 }
 
-                .account-type {
+                .phone-btn {
                     position: absolute;
-                    top: 5px;
-                    right: 0;
-                    padding: 0 6px;
-                    height: 24px;
-                    line-height: 24px;
-                    font-size: 12px;
-                    text-align: center;
-                    border: 0.55px solid #fff;
-                    border-radius: 2px;
+                    right: -5px;
+                    top: 0px;
+                    display: inline-block;
+                    padding: 5px 15px;
+                    font-size: 22px;
+                    cursor: pointer;
+                    user-select: none;
                 }
+                
             }
-        }
-        .stats {
-            ion-row,ion-col {
-                margin: 0;
-                padding: 0;
-            }
-            margin-top: 15px;
-            .stat-item {
-                text-align: center;
-                font-size: 12px;
-                p {
-                    line-height: 14px;
-                }
-                .unit {
-                    font-size: 10px;
-                }
-                .digit {
-                    font-size: 18px;
-                }
-            }
-        }
-    }
-    .other-info {
-        ion-row,ion-col, p {
-            margin: 0;
-            padding: 0;
-        }
-
-        .info-item {
-            padding: 15px;
-            &:first-child {
-                border-right: 0.55px solid #eee; 
-            }
-            .label {
-                font-size: 12px;
-                color: #666;
-            }
-
-            .value {
-                font-size: 14px;
-                color: #333;
-                margin-top: 5px;
-                clear: right;
-                .left-days {
-                    float: right;
-                    font-size: 10px;
-                    color: #999;
-                }
-            }
-        }
-    }
-
-    .other-infos {
-        ion-row,ion-col {
-            margin: 0;
-            padding: 0;
-        }
-        margin-top: 15px;
-        .label {
-            font-size: 12px;
-        }
-        .value {
-            font-size: 16px;
-            .left-days {
-                font-size: 10px;
-                padding-left: 10px;
-                line-height: 10px;
-                vertical-align: 1px;
-            }
-        }
-        .balance {
-            text-align: right;
         }
     }
 
     .splitor {
         height: 5px;
         background: #f7f7f7;
-    }
-
-    .features {
-        ion-row,ion-col {
-            margin: 0;
-            padding: 0;
-        }
-        padding-top: 10px;
-        .feature {
-            padding: 15px 15px 0;
-            text-align: center;
-            font-size: 14px;
-            color: #333;
-            margin-bottom: 10px;
-            .icon {
-                img {
-                    height: 30px;
-                }
-            }
-            .name {
-                margin-top: 5px;
-            }
-        }
     }
 }
