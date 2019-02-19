@@ -52,14 +52,6 @@
       </ion-list>
     </div>
     <div class="splitor"></div>
-    <div class="job-body job-box">
-      <h2 class="title">工作描述</h2>
-      <div class="body" [innerHTML]="job.body.replace('\n', '<br>')"></div>
-    </div>
-
-    <div class="splitor">
-
-    </div>
     <div class="contacts job-box">
       <h2 class="title">联系领队</h2>
       <ion-list>
@@ -70,6 +62,11 @@
           </span>
         </ion-item>
       </ion-list>
+    </div>
+    <div class="splitor"></div>
+    <div class="job-body job-box">
+      <h2 class="title">工作描述</h2>
+      <div class="body" [innerHTML]="job.body.replace('\n', '<br>')"></div>
     </div>
 
   </div>

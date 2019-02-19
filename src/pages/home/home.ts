@@ -58,19 +58,31 @@ export class HomePage {
   }
 
   loadHomeData(work_date = null) {
-    this.users.GetUserHomeData(work_date)
-      .then(data => {
-        // console.log(data);
-        const result = data['data'];
-        this.company = result.company;
-        this.my_jobs = result.my_jobs;
-        this.jobs = result.jobs;
-        this.jobDates = result.job_dates;
-      })
-      .catch(error => {
-        this.error = error.message || "额，服务器出错了~";
-      })
+    return new Promise((resolve) => {
+      this.users.GetUserHomeData(work_date)
+        .then(data => {
+          // console.log(data);
+          let result = data['data'];
+          this.company = result.company;
+          this.my_jobs = result.my_jobs;
+          this.jobs = result.jobs;
+          this.jobDates = result.job_dates;
+          resolve();
+        })
+        .catch(error => {
+          this.error = error.message || "额，服务器出错了~";
+          resolve();
+        });
+    });
   }
+
+  // doRefresh(ev) {
+  //   this.currentDate = null;
+  //   this.loadHomeData(null)
+  //     .then(() => {
+  //       ev.complete();
+  //     })
+  // }
 
   selectDate(date) {
     if (!(date.has_job || date.has_apply)) return;
