@@ -60,7 +60,7 @@ export class HomePage {
   loadHomeData(work_date = null) {
     this.users.GetUserHomeData(work_date)
       .then(data => {
-        console.log(data);
+        // console.log(data);
         const result = data['data'];
         this.company = result.company;
         this.my_jobs = result.my_jobs;
