@@ -85,7 +85,7 @@ export class HomePage {
   }
 
   selectJob(job) {
-    this.app.getRootNavs()[0].push('JobDetailPage', { job: job });
+    this.app.getRootNavs()[0].push('JobDetailPage', { job_id: job.id });
   }
 
 }

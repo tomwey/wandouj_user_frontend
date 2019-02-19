@@ -163,6 +163,41 @@ export class Users {
         });
     }
 
+    GetJob(job_id) {
+        return new Promise((resolve, reject) => {
+            this.token().then(token => {
+                // params['token'] = token;
+                this.api.GET('gwc/jobs/' + job_id, { token: token }, "加载中...", true)
+                    .then(res => {
+                        resolve(res);
+                    })
+                    .catch(error => {
+                        reject(error);
+                    })
+            })
+                .catch(error => { });
+            // 
+        });
+    }
+
+    HandleApply(job_id, work_date, action) {
+        return new Promise((resolve, reject) => {
+            this.token().then(token => {
+                // params['token'] = token;
+                this.api.POST('gwc/apply/' + action,
+                    { token: token, job_id: job_id, work_date: work_date }, "正在提交", true)
+                    .then(res => {
+                        resolve(res);
+                    })
+                    .catch(error => {
+                        reject(error);
+                    })
+            })
+                .catch(error => { });
+            // 
+        });
+    }
+
     GetJobPlans(job_id) {
         return new Promise((resolve, reject) => {
             this.token().then(token => {

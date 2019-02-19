@@ -1,3 +1,127 @@
 page-job-detail {
+    .job {
+        background: #fff;
+        h3,p {
+            margin: 0;
+        }
+        .base-info {
+            // padding: 15px;
+            color: #999;
+            font-size: 14px;
+            .item-ios.item-block .item-inner {
+                border-bottom: 0;
+            }
 
+            .job-id {
+                font-size: 12px;
+            }
+            .name {
+                font-size: 16px;
+                color: #333;
+                margin: 0;
+                padding: 0;
+                margin: 5px 0;
+            }
+
+            .project-name {
+                font-size: 12px;
+            }
+            .price {
+                color: color($colors, primary);
+            }
+            .special {
+                display:inline-block;
+                font-size: 10px;
+                background: rgb(240, 250, 242);
+                height: 24px;
+                line-height: 24px;
+                border-radius: 12px;
+                padding: 0 12px;
+                color: color($colors,primary);
+                margin-top: 5px;
+            }
+        }
+
+        .address {
+            border-top: 0.55px solid #f2f2f2;
+            .item-ios.item-block .item-inner {
+                border-bottom: 0!important;
+                color: #999;
+                font-size: 14px;
+                ion-icon {
+                    vertical-align: -2px;
+                    margin-right: 5px;
+                    color: #787878;
+                }
+            }
+        }
+
+        .splitor {
+            height: 6px;
+            background: #f2f2f2;
+
+        }
+
+        .job-box {
+            .title {
+                margin: 0;
+                font-size: 14px;
+                color: #333;
+                padding: 10px 15px;
+                border-bottom: 0.55px solid #f2f2f2;
+            }
+        }
+
+        .plans {
+            .list-ios {
+                margin-top: 0;
+                margin-bottom: 0;
+            }
+
+            .list-ios > .item-block:first-child {
+                border-top: 0;
+            }
+
+            .list-ios > .item-block:last-child {
+                border-bottom: 0;
+            }
+
+            .item-ios .item-inner {
+                border-bottom-color: #f2f2f2;
+            }
+
+            .work-date {
+                font-size: 14px;
+                color: #333;
+                font-weight: normal;
+                .price {
+                    color: color($colors, primary);
+                    padding-left: 5px;
+                }
+            }
+
+            .state {
+                font-size: 14px;
+                
+                padding-right: 5px;
+                line-height: 14px;
+                vertical-align: -5px;
+                &.state-pending {
+                    color: #F6A623;
+                }
+                &.state-canceled, &.state-rejected {
+                    color: color($colors, danger);
+                }
+                &.state-approved, &.state-checkin, &.state-checkout{
+                    color: color($colors, primary);;
+                }
+            }
+        }
+
+        .body {
+            padding: 15px;
+            font-size: 12px;
+            color: #333;
+        }
+    }
 }
