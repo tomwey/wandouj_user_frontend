@@ -51,15 +51,14 @@
     <ion-list>
       <ion-item *ngFor="let salary of salaryData" class="salary-item">
         <!-- <p>{{salary.id}}</p> -->
-        <h2 text-wrap>{{salary.project && salary.project.title}}</h2>
+        <h2 text-wrap>{{salary.title || salary.job_name}}</h2>
         <p>{{ salary.pay_time ? '确认发放时间: ' + salary.pay_time : '申请发放时间: ' + salary.time }}
           <br>支付宝姓名: {{salary.pay_name}}
           <br>支付宝账号: {{salary.pay_account}}
         </p>
+        <p>{{salary.merchant && (salary.merchant.alias_name || salary.merchant.name)}}</p>
         <ion-note item-right style="text-align:right;">
           <p class="money"><span class="unit">¥</span>{{salary.money}}</p>
-          <!-- <p class="badge state state-{{salary.state}}">{{salary.state_name}}</p> -->
-          <ion-badge color="{{ColorBy(salary)}}">{{salary.state_name}}</ion-badge>
         </ion-note>
       </ion-item>
     </ion-list>
