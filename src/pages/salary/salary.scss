@@ -1,3 +1,85 @@
 page-salary {
+    .salary-caption {
+        background: color($colors, primary);
+        padding: 10px;
 
+        h1,h2,h3,p {
+            margin: 0;
+            padding: 0;
+            color: white;
+            font-family: 'PingFang SC';
+        }
+        .unit {
+            font-size: 12px;
+            padding-right: 5px;
+        }
+        .label {
+            font-size: 12px;
+        }
+    
+        .senting {
+            text-align: center;
+            h1 {
+                font-size: 24px;
+            }
+        }
+
+        .salary-stat {
+            text-align: center;
+            margin-top: 12px;
+            h3 {
+                font-size: 18px;
+                // color:red;
+            }
+        }
+    }
+
+    .toolbar-ios {
+        padding: 0;
+        margin: 0;
+    }
+    
+    .segment-md .segment-button {
+        color: #666;
+        border-bottom-width: 0;
+        // padding-top: 1px;
+        &.segment-activated {
+            color: color($colors,primary);
+            border-bottom-width: 2px;
+        }
+    }
+
+    .salary-item {
+        .money {
+            font-size: 18px;
+            font-family: 'PingFang SC';
+            color: color($colors, primary);
+            margin-bottom: 5px;
+            .unit {
+                font-size: 12px;
+                padding-right: 3px;
+            }
+        }
+
+        .badge-ios {
+            padding: 4px 6px;
+            border-radius: 2px;
+            font-size: 12px;
+        }
+
+        p {
+            font-size: 12px;
+            color: #666;
+        }
+        h2 {
+            font-size: 14px;
+            color: rgb(58,58,58);
+            padding-top: 2px;
+            padding-bottom: 2px;
+        }
+
+        .state {
+            
+        }
+    }
 }

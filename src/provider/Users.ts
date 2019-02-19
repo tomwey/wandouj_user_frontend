@@ -433,7 +433,7 @@ export class Users {
     GetUserProfile(showLoading = true, loadingText = '正在加载...') {
         return new Promise((resolve, reject) => {
             this.token().then(token => {
-                this.api.GET('user/me', { token: token }, loadingText, showLoading)
+                this.api.GET('gwc/user/profile', { token: token }, loadingText, showLoading)
                     .then(res => {
                         resolve(res);
                     })
@@ -463,10 +463,10 @@ export class Users {
         });
     }
 
-    GetSalaries(state, showLoading = true, loadingText = '正在加载...') {
+    GetSalaries(state, showLoading = true, loadingText = '加载中...') {
         return new Promise((resolve, reject) => {
             this.token().then(token => {
-                this.api.GET('salaries/list', { token: token, state: state }, loadingText, showLoading)
+                this.api.GET('gwc/user/salaries', { token: token, state: state }, loadingText, showLoading)
                     .then(res => {
                         resolve(res);
                     })

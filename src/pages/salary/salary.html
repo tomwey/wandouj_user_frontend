@@ -4,15 +4,64 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
+<ion-header no-border>
 
-  <ion-navbar>
-    <ion-title>Salary</ion-title>
+  <ion-navbar color="primary">
+    <ion-title>我的工资</ion-title>
   </ion-navbar>
 
 </ion-header>
 
+<ion-content>
+  <div class="salary-caption">
+    <div class="senting">
+      <h1><span class="unit">¥</span>{{ user.unpayed_money || '0.00' }}</h1>
+      <p class="label">待发工资</p>
+    </div>
+    <ion-row>
+      <ion-col col-6>
+        <div class="salary-stat">
+          <p class="label">已发工资</p>
+          <h3><span class="unit">¥</span>{{ user.payed_money || '0.00' }}</h3>
+        </div>
+      </ion-col>
+      <ion-col col-6>
+        <div class="salary-stat">
+          <p class="label">工资总额</p>
+          <h3><span class="unit">¥</span>{{ user.total_money || '0.00' }}</h3>
+        </div>
+      </ion-col>
+    </ion-row>
+  </div>
+  <ion-toolbar color="white">
+    <ion-segment [(ngModel)]="dataType" mode="md" (ionChange)="segmentChanged($event)">
+      <ion-segment-button value="0">
+        待发放
+      </ion-segment-button>
+      <ion-segment-button value="1">
+        已发放
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
 
-<ion-content padding>
-
+  <div class="salary-data">
+    <div class="empty-error-box" *ngIf="!!error">
+      {{error}}
+    </div>
+    <ion-list>
+      <ion-item *ngFor="let salary of salaryData" class="salary-item">
+        <!-- <p>{{salary.id}}</p> -->
+        <h2 text-wrap>{{salary.project && salary.project.title}}</h2>
+        <p>{{ salary.pay_time ? '确认发放时间: ' + salary.pay_time : '申请发放时间: ' + salary.time }}
+          <br>支付宝姓名: {{salary.pay_name}}
+          <br>支付宝账号: {{salary.pay_account}}
+        </p>
+        <ion-note item-right style="text-align:right;">
+          <p class="money"><span class="unit">¥</span>{{salary.money}}</p>
+          <!-- <p class="badge state state-{{salary.state}}">{{salary.state_name}}</p> -->
+          <ion-badge color="{{ColorBy(salary)}}">{{salary.state_name}}</ion-badge>
+        </ion-note>
+      </ion-item>
+    </ion-list>
+  </div>
 </ion-content>
