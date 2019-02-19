@@ -1,0 +1,39 @@
+job-item {
+    .job-id {
+        font-size: 12px!important;
+        color: #999!important;
+    }
+    .name {
+        font-size: 16px;
+        color: #333;
+    }
+
+    .project-name, .work-date, .work-time {
+        font-size: 14px;
+        color: #999;
+    }
+
+    .price {
+        font-size: 16px;
+        font-family: 'PingFang SC', Arial, Helvetica, sans-serif;
+        color: color($colors,primary);
+        text-align: center;
+    }
+
+    .left-count {
+        margin-top: 10px;
+        text-align: center;
+        font-size: 14px;
+        color: #999;
+        .digit {
+            // font-size: 18px;
+            font-family: 'PingFang SC', Arial, Helvetica, sans-serif;
+            color: #F6A623;//color($colors,primary);
+            padding: 0 5px;
+        }
+    }
+
+    .item-ios.item-block .item-inner {
+        border-bottom-color: #f2f2f2!important;
+    }
+}

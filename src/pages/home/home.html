@@ -24,6 +24,35 @@
     </div>
 
   </div>
+  <div class="latest-jobs">
+    <h2 class="name">近期工作</h2>
+    <div class="dates-bar">
+      <div class="date-item" tappable (click)="selectDate(date);" *ngFor="let date of jobDates;let i = index;">
+        <div class="weekday">{{ i == 0 ? "今天" : date.name}}</div>
+        <div class="day-wrap" [class.has-job]="date.has_job" [class.has-apply]="date.has_apply">
+          <div class="day">{{date.day}}</div>
+          <div class="dot"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="my-jobs" *ngIf="my_jobs.length > 0">
+    <h2 class="title">我的工作</h2>
+    <div class="job-list">
+
+    </div>
+  </div>
+  <div class="jobs" *ngIf="jobs">
+    <h2 class="title">正在招募</h2>
+    <div class="job-list">
+      <ion-list>
+        <div *ngFor="let job of jobs" tappable (click)="selectJob(job);">
+          <job-item [job]="job"></job-item>
+        </div>
+      </ion-list>
+    </div>
+  </div>
 
   <!-- <div class="splitor"></div> -->
   <!-- <div class="features">

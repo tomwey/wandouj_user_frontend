@@ -1,0 +1,22 @@
+<ion-item *ngIf="!!job">
+  <p class="job-id">工作编号 {{job.id}}</p>
+  <h3 class="name" text-wrap>{{job.name}}</h3>
+  <p class="project-name" text-wrap>{{job.project_name}}</p>
+  <p class="work-date">
+    <ion-icon name="ios-calendar-outline"></ion-icon>{{job.work_dates}}
+  </p>
+  <p class="work-time">
+    <ion-icon name="ios-time-outline"></ion-icon>{{job.work_times}}
+  </p>
+  <div item-right style="text-align: right;">
+    <p class="price">
+      <ion-icon name="icon_wallet"></ion-icon><br><span class="money">{{job.price}}</span><span
+        class="unit">{{job.unit}}</span>
+    </p>
+    <p class="left-count">
+      <span *ngIf="job.left_total > 0">还剩<span class="digit">{{job.left_total}}</span>个名额</span>
+      <span class="digit" *ngIf="job.left_total == 0">已满</span>
+    </p>
+
+  </div>
+</ion-item>

@@ -27,6 +27,8 @@ export class HomePage {
   my_jobs: any = [];
   jobs: any = [];
 
+  jobDates: any = [];
+
   // @ViewChild('slides') slides: Slides;
   @ViewChild(Content) content: Content;
 
@@ -44,6 +46,8 @@ export class HomePage {
     this.iosFixed.fixedScrollFreeze(this.content);
 
     this.loadHomeData();
+
+    // console.log(new Date().getDay());
   }
 
   callPhone(phone) {
@@ -59,10 +63,17 @@ export class HomePage {
         this.company = result.company;
         this.my_jobs = result.my_jobs;
         this.jobs = result.jobs;
+        this.jobDates = result.job_dates;
       })
       .catch(error => {
         this.error = error.message || "额，服务器出错了~";
       })
+  }
+
+  selectDate(date) {
+    if (!(date.has_job || date.has_apply)) return;
+
+    console.log(date);
   }
 
 }
