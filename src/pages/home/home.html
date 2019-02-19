@@ -42,8 +42,8 @@
     <h2 class="title">我的工作</h2>
     <div class="job-list">
       <ion-list>
-        <div *ngFor="let apply of my_jobs" tappable (click)="selectJob(apply.job);">
-          <job-item [job]="apply.job"></job-item>
+        <div *ngFor="let job of my_jobs" tappable (click)="selectJob(job);">
+          <job-item [job]="job"></job-item>
         </div>
       </ion-list>
     </div>

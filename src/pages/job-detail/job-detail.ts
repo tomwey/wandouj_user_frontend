@@ -56,6 +56,10 @@ export class JobDetailPage {
     this._handleApply(plan, 'create');
   }
 
+  callPhone(mobile) {
+    window.open("tel:" + mobile);
+  }
+
   cancel(plan) {
     this.alertCtrl.create({
       title: "取消提示",

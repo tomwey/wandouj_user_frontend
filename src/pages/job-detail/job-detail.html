@@ -21,6 +21,7 @@
         <p class="project-name">{{job.project_name}}</p>
         <span class="special" *ngIf="!!job.special">{{job.special}}</span>
         <p class="price" item-right>{{job.price}}{{job.unit}}</p>
+
       </ion-item>
     </div>
     <div class="address">
@@ -43,7 +44,7 @@
           <ion-note item-right>
             <!-- <span class="state">待审核</span> -->
             <span class="state state-{{plan.state}}" *ngIf="!!plan.state">{{plan.state_name}}</span>
-            <button ion-button small (click)="commit(plan);" *ngIf="!plan.state">报名</button>
+            <button ion-button small (click)="commit(plan);" *ngIf="!plan.state" [disabled]="!plan.opened">报名</button>
             <button ion-button small color="danger" *ngIf="plan.can_cancel" (click)="cancel(plan)">取消</button>
             <button ion-button small *ngIf="plan.can_reapply" (click)="reapply(plan);">重新报名</button>
           </ion-note>
@@ -54,6 +55,21 @@
     <div class="job-body job-box">
       <h2 class="title">工作描述</h2>
       <div class="body" [innerHTML]="job.body.replace('\n', '<br>')"></div>
+    </div>
+
+    <div class="splitor">
+
+    </div>
+    <div class="contacts job-box">
+      <h2 class="title">联系领队</h2>
+      <ion-list>
+        <ion-item *ngFor="let contact of job.contacts">
+          {{contact.name}}
+          <span class="phone-btn" item-right tappable (click)="callPhone(contact.mobile);">
+            <ion-icon name="ios-call-outline"></ion-icon>
+          </span>
+        </ion-item>
+      </ion-list>
     </div>
 
   </div>

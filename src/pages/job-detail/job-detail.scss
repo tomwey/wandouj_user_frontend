@@ -70,9 +70,7 @@ page-job-detail {
                 padding: 10px 15px;
                 border-bottom: 0.55px solid #f2f2f2;
             }
-        }
 
-        .plans {
             .list-ios {
                 margin-top: 0;
                 margin-bottom: 0;
@@ -89,7 +87,9 @@ page-job-detail {
             .item-ios .item-inner {
                 border-bottom-color: #f2f2f2;
             }
+        }
 
+        .plans {
             .work-date {
                 font-size: 14px;
                 color: #333;
@@ -122,6 +122,16 @@ page-job-detail {
             padding: 15px;
             font-size: 12px;
             color: #333;
+        }
+
+        .contacts {
+            .phone-btn {
+                display: inline-block;
+                padding: 5px 15px;
+                font-size: 22px;
+                cursor: pointer;
+                user-select: none;
+            }
         }
     }
 }
