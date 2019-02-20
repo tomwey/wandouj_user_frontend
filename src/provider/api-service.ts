@@ -4,6 +4,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import { Md5 } from 'ts-md5/dist/md5';
 import { Tools } from './Tools';
+import { COMM_API_KEY, GWC_API_KEY } from '../app/config';
 
 /*
   Generated class for the ApiService provider.
@@ -13,8 +14,8 @@ import { Tools } from './Tools';
 */
 // 正式服务器和账号
 const API_HOST: string = "http://jobs.afterwind.cn/api/v1";
-const API_KEY: string = "4d7295cda1e6dc65dfcf4466db008a8f";
-const GWC_API_KEY: string = "63a2cc918b179eae4b2859e36b501afd";
+// const API_KEY: string = "4d7295cda1e6dc65dfcf4466db008a8f";
+// const GWC_API_KEY: string = "63a2cc918b179eae4b2859e36b501afd";
 
 // 测试账号和测试服务器
 // const API_HOST: string = "http://0.0.0.0:3000/api/v1";
@@ -195,7 +196,8 @@ export class ApiService {
   // 生成MD5
   private generateAccessKey(i, uri): string {
     // console.log(uri);
-    const api_key = uri === "auth_codes" || uri == "p/about" || uri == "p/agreement" ? API_KEY : GWC_API_KEY;
+    const api_key = uri === "auth_codes" || uri == "p/about" || uri == "p/agreement" ?
+      COMM_API_KEY : GWC_API_KEY;
     // console.log(api_key);
     return Md5.hashStr(api_key + i.toString(), false).toString();
   } // end generate access key
@@ -241,7 +243,7 @@ export class ApiService {
       signStr += value + ':';
     })
 
-    signStr += API_KEY;
+    signStr += COMM_API_KEY;
 
     return Md5.hashStr(signStr, false).toString();
   }

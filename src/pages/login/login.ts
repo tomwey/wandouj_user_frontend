@@ -5,7 +5,7 @@ import { /*IonicPage,*/ NavController, NavParams, Content, App } from 'ionic-ang
 import { Users } from '../../provider/Users';
 import { Tools } from '../../provider/Tools';
 import { iOSFixedScrollFreeze } from '../../provider/iOSFixedScrollFreeze';
-import { HomePage } from '../home/home';
+// import { HomePage } from '../home/home';
 import { TabsPage } from '../tabs/tabs';
 // import { TabsPage } from '../tabs/tabs';
 // import { SettingPage } from '../setting/setting';
