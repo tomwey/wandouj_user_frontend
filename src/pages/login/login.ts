@@ -89,6 +89,10 @@ export class LoginPage {
       });
   }
 
+  openPage() {
+    this.app.getRootNavs()[0].push('CommWebPage', { title: '用户使用协议', slug: 'agreement' });
+  }
+
   // checkProfile() {
   //   this.users.GetUserProfile()
   //     .then(data => {

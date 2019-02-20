@@ -48,6 +48,10 @@ export class Users {
         return this.api.GET('u/auth', { url: url });
     }
 
+    GetPage(slug) {
+        return this.api.GET('p/' + slug, null);
+    }
+
     GetUserHomeData(work_date) {
         return new Promise((resolve, reject) => {
             this.token().then(token => {

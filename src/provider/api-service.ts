@@ -194,7 +194,10 @@ export class ApiService {
 
   // 生成MD5
   private generateAccessKey(i, uri): string {
-    return Md5.hashStr(uri === "auth_codes" ? API_KEY : GWC_API_KEY + i.toString(), false).toString();
+    // console.log(uri);
+    const api_key = uri === "auth_codes" || uri == "p/about" || uri == "p/agreement" ? API_KEY : GWC_API_KEY;
+    // console.log(api_key);
+    return Md5.hashStr(api_key + i.toString(), false).toString();
   } // end generate access key
 
   // 处理请求成功的回调

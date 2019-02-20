@@ -55,7 +55,7 @@ export class SettingPage {
   }
 
   gotoAbout() {
-
+    this.app.getRootNavs()[0].push('CommWebPage', { title: '关于豌豆兼', slug: 'about' });
   }
 
   callPhone() {
