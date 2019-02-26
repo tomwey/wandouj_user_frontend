@@ -196,7 +196,7 @@ export class ApiService {
   // 生成MD5
   private generateAccessKey(i, uri): string {
     // console.log(uri);
-    const api_key = uri === "auth_codes" || uri == "p/about" || uri == "p/agreement" ?
+    const api_key = uri === "auth_codes" || uri == "filter/companies" || uri == "p/about" || uri == "p/agreement" ?
       COMM_API_KEY : GWC_API_KEY;
     // console.log(api_key);
     return Md5.hashStr(api_key + i.toString(), false).toString();

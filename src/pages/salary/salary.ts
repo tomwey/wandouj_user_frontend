@@ -66,6 +66,7 @@ export class SalaryPage {
 
     this.users.GetSalaries(state, merch_id)
       .then(data => {
+        this.totalMoney = data['total'];
         if (data && data['data']) {
           this.salaryData = data['data'];
           this.error = this.salaryData.length == 0 ? '暂无工资数据' : null;
