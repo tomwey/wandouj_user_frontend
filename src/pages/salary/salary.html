@@ -43,16 +43,18 @@
       </ion-segment-button>
     </ion-segment>
   </ion-toolbar> -->
+  <div class="salary-toolbar">
+    <filter-bars [filterItems]="filterItems" (onSelectFilterItem)="selectedFilterItem($event);"></filter-bars>
+    <!-- <ion-searchbar></ion-searchbar> -->
+    <div class="total-box" *ngIf="salaryData.length > 0">共计 {{totalMoney}} 元</div>
+  </div>
+
   <div class="empty-error-box" *ngIf="!!error">
     {{error}}
   </div>
 
   <div class="salary-data">
-    <div class="salary-toolbar">
-      <filter-bars [filterItems]="filterItems" (onSelectFilterItem)="selectedFilterItem($event);"></filter-bars>
-      <!-- <ion-searchbar></ion-searchbar> -->
-      <div class="total-box" *ngIf="salaryData.length > 0">共计 {{totalMoney}} 元</div>
-    </div>
+
     <virtual-scroller #scroll [items]="salaryData" [childHeight]="180">
       <ion-card *ngFor="let salary of scroll.viewPortItems" class="salary-item">
         <ion-item>
