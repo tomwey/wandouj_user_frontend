@@ -61,7 +61,10 @@ export class SalaryPage {
     this.error = null;
     this.salaryData = [];
 
-    this.users.GetSalaries(this.dataType, true)
+    let state = (this.filterItems[0].value || {}).value;
+    let merch_id = (this.filterItems[1].value || {}).value;
+
+    this.users.GetSalaries(state, merch_id)
       .then(data => {
         if (data && data['data']) {
           this.salaryData = data['data'];
@@ -75,8 +78,65 @@ export class SalaryPage {
       });
   }
 
-  segmentChanged(ev) {
+  selectFilterItem(item, callback) {
+    if (item.field == "state") {
+      let temp = [
+        {
+          label: '全部',
+          value: '-1'
+        },
+        {
+          label: '待发放',
+          value: '0'
+        },
+        {
+          label: '已发放',
+          value: '1'
+        }
+      ];
+      if (callback) {
+        callback(temp);
+      }
+    } else if (item.field == "merch_id") {
+      this.users.GetCommCompanies()
+        .then(data => {
+          // console.log(data);
+          let temp = [{ label: '全部', value: null }];
+          let arr = data['data'];
+          arr.forEach(ele => {
+            temp.push({ label: ele.alias_name, value: ele.id });
+          });
+          if (callback) {
+            callback(temp);
+          }
+        })
+        .catch(error => {
+
+        });
+    }
+  }
+
+  selectedFilterItem(item) {
     this.loadSalariesData();
   }
+
+  totalMoney: any = "0.00";
+
+  filterItems: any = [
+    {
+      name: '发放状态',
+      field: 'state',
+      selectFunc: (item, callback) => {
+        this.selectFilterItem(item, callback);
+      }
+    },
+    {
+      name: '所属人力公司',
+      field: 'merch_id',
+      selectFunc: (item, callback) => {
+        this.selectFilterItem(item, callback);
+      }
+    }
+  ];
 
 }

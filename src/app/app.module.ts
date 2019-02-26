@@ -22,6 +22,7 @@ import { iOSFixedScrollFreeze } from '../provider/iOSFixedScrollFreeze';
 import { PipesModule } from '../pipes/pipes.module';
 import { ComponentsModule } from '../components/components.module';
 import { TabsPage } from '../pages/tabs/tabs';
+import { VirtualScrollerModule } from 'ngx-virtual-scroller';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { TabsPage } from '../pages/tabs/tabs';
       backButtonText: '',
     }),
     PipesModule,
-    ComponentsModule
+    ComponentsModule,
+    VirtualScrollerModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [

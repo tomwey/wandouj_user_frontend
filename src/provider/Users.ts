@@ -133,6 +133,22 @@ export class Users {
         });
     }
 
+    GetCommCompanies() {
+        return new Promise((resolve, reject) => {
+            this.token().then(token => {
+                this.api.GET('filter/companies', { token: token, type: 1 }, "加载中...", true)
+                    .then(res => {
+                        resolve(res);
+                    })
+                    .catch(error => {
+                        reject(error);
+                    })
+            })
+                .catch(error => { });
+            // 
+        });
+    }
+
     SaveAccount(params) {
         return new Promise((resolve, reject) => {
             this.token().then(token => {
@@ -467,10 +483,10 @@ export class Users {
         });
     }
 
-    GetSalaries(state, showLoading = true, loadingText = '加载中...') {
+    GetSalaries(state, comp_id) {
         return new Promise((resolve, reject) => {
             this.token().then(token => {
-                this.api.GET('gwc/user/salaries', { token: token, state: state }, loadingText, showLoading)
+                this.api.GET('gwc/user/salaries', { token: token, state: state, comp_id: comp_id }, "加载中...", true)
                     .then(res => {
                         resolve(res);
                     })

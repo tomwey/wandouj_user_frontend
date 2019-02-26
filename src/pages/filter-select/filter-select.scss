@@ -1,0 +1,26 @@
+page-filter-select {
+    .item-ios {
+        font-size: 14px !important;
+        color: #333;
+        .name {
+            font-size: 14px;
+            color: #333;
+        }
+    }
+
+    .list-ios > .item-block:last-child {
+        border-bottom-color: #eee;
+    }
+
+    .list-ios > .item-block:first-child {
+        border-top-color: #eee;
+    }
+    
+    .list-ios .item-block .item-inner {
+        border-bottom-color: #eee;
+    }
+
+    .list-ios {
+        margin-top: 0;
+    }
+}

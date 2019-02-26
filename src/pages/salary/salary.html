@@ -33,7 +33,7 @@
       </ion-col>
     </ion-row>
   </div>
-  <ion-toolbar color="white">
+  <!-- <ion-toolbar color="white">
     <ion-segment [(ngModel)]="dataType" mode="md" (ionChange)="segmentChanged($event)">
       <ion-segment-button value="0">
         待发放
@@ -42,11 +42,16 @@
         已发放
       </ion-segment-button>
     </ion-segment>
-  </ion-toolbar>
+  </ion-toolbar> -->
 
   <div class="salary-data">
     <div class="empty-error-box" *ngIf="!!error">
       {{error}}
+    </div>
+    <div class="salary-toolbar">
+      <filter-bars [filterItems]="filterItems" (onSelectFilterItem)="selectedFilterItem($event);"></filter-bars>
+      <!-- <ion-searchbar></ion-searchbar> -->
+      <div class="total-box" *ngIf="salaryData.length > 0">共计 {{totalMoney}} 元</div>
     </div>
     <ion-list>
       <ion-item *ngFor="let salary of salaryData" class="salary-item">

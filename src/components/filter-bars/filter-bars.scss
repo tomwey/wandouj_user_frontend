@@ -1,0 +1,62 @@
+filter-bars {
+    .filter-bar {
+        display: flex;
+        background: #fff;
+        padding: 5px 10px;
+        border-bottom: 0.5px solid #f2f2f2;
+        height: 40px;
+        box-sizing: border-box;
+        // position: absolute;
+        // top: 0;
+        // left: 0;
+        // width: 100%;
+        .filter-item {
+            flex: 1;
+            text-align: center;
+            // background: #f2f2f2;
+            border-radius: 4px; 
+            padding: 6px 0;
+            font-size: 12px;
+            font-family: -apple-system, 'Helvetica Neue', sans-serif;
+            color: #666;
+            // margin-right: 10px;
+            &:last-child {
+                // margin-right: 0;
+                border-right: 0;
+            }
+
+            &.width-3 {
+                max-width: 33.333333%;
+            }
+
+            &.width-4 {
+                max-width: 25%;
+            }
+
+            &.width-5 {
+                max-width: 20%;
+            }
+
+            border-right: 0.5px solid #f2f2f2;
+
+            .name {
+                display: inline-block;
+                max-width: 75%;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                vertical-align: top;
+            }
+            .icon-wrap {
+                display: inline-block;
+                margin-left: 3px;
+                // line-height: 17px;
+                vertical-align: top;
+                ion-icon {
+                    color: #999;
+                    margin-top: 2px;
+                }
+            }
+        }
+    }
+}

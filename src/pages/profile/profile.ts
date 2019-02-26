@@ -46,6 +46,14 @@ export class ProfilePage {
       required: true
     },
     {
+      id: 'idcard',
+      name: '身份证号码',
+      type: 2,
+      // subtype: 'tel',
+      required: true,
+      pattern: /^(([1][1-5])|([2][1-3])|([3][1-7])|([4][1-6])|([5][0-4])|([6][1-5])|([7][1])|([8][1-2]))\d{4}(([1][9]\d{2})|([2]\d{3}))(([0][1-9])|([1][0-2]))(([0][1-9])|([1-2][0-9])|([3][0-1]))\d{3}[0-9xX]$/
+    },
+    {
       id: 'current_pay_name',
       name: '支付宝姓名',
       type: 2,
@@ -149,6 +157,12 @@ export class ProfilePage {
       const control = this.controls[i];
       if (control.required && !control.value) {
         this.tools.showToast(`${control.name}不能为空`);
+        return;
+      }
+
+      let reg = new RegExp(control.pattern);
+      if (control.value && !reg.test(control.value)) {
+        this.tools.showToast(`${control.name}不正确`);
         return;
       }
 
