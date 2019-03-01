@@ -67,6 +67,9 @@ export class HomePage {
           this.my_jobs = result.my_jobs;
           this.jobs = result.jobs;
           this.jobDates = result.job_dates;
+          if (!result.has_profile) {
+            this.app.getRootNavs()[0].setRoot("ProfilePage");
+          }
           resolve();
         })
         .catch(error => {
