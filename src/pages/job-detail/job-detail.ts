@@ -83,6 +83,16 @@ export class JobDetailPage {
 
   }
 
+  viewMap(job) {
+    if (!job || !job.address) return;
+
+    // this.navCtrl.push('WorkMapPage', { address: job.address });
+    // http://apis.map.qq.com/uri/v1/marker?marker=coord:30.595810,103.912830;title:渔虾跳主题餐吧;addr: 城南优品道广场星光广场一楼
+    // window.open("https://uri.amap.com/marker?position=经度,纬度&name=所在的位置名称");
+    window.open(`https://uri.amap.com/marker?position=${job.location}&name=${encodeURI(job.address)}`);
+    // window.open("http://api.map.baidu.com/marker?location=30.694057,103.945093&title=&output=html")
+  }
+
   reapply(plan) {
     this._handleApply(plan, 'reapply');
   }

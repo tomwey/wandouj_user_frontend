@@ -29,7 +29,7 @@
         <p text-wrap>
           <ion-icon name="ios-pin-outline"></ion-icon>{{job.address}}
         </p>
-        <button ion-button clear item-right>在地图中查看</button>
+        <button ion-button clear item-right (click)="viewMap(job);">在地图中查看</button>
       </ion-item>
     </div>
     <div class="splitor" *ngIf="job.plans.length > 0"></div>
