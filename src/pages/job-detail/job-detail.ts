@@ -46,6 +46,9 @@ export class JobDetailPage {
       .then(data => {
         // console.log(data);
         this.job = data['data'];
+        if (this.job.lead_mobile) {
+          this.job.contacts = [{ name: this.job.lead_mobile, mobile: this.job.lead_mobile }];
+        }
       })
       .catch(error => {
         this.tools.showToast(error.message || "服务器出错了~");

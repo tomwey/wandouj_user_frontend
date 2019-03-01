@@ -32,8 +32,8 @@
         <button ion-button clear item-right>在地图中查看</button>
       </ion-item>
     </div>
-    <div class="splitor"></div>
-    <div class="plans job-box">
+    <div class="splitor" *ngIf="job.plans.length > 0"></div>
+    <div class="plans job-box" *ngIf="job.plans.length > 0">
       <h2 class="title">工作报名</h2>
       <ion-list>
         <ion-item *ngFor="let plan of job.plans">
@@ -41,19 +41,37 @@
               *ngIf="!!plan.price">{{plan.price}}{{job.unit}}</span>
           </h2>
 
+          <p class="left-count" [class.empty]="plan.total_count <= plan.joined_count">
+            {{plan.total_count > plan.joined_count ? '剩余 ' + (plan.total_count - plan.joined_count) + ' 个名额' : '报名人数已满'}}
+          </p>
+
           <ion-note item-right>
             <!-- <span class="state">待审核</span> -->
             <span class="state state-{{plan.state}}" *ngIf="!!plan.state">{{plan.state_name}}</span>
-            <button ion-button small (click)="commit(plan);" *ngIf="!plan.state" [disabled]="!plan.opened">报名</button>
+            <button ion-button small [disabled]="plan.total_count <= plan.joined_count" (click)="commit(plan);"
+              *ngIf="!plan.state" [disabled]="!plan.opened">报名</button>
             <button ion-button small color="danger" *ngIf="plan.can_cancel" (click)="cancel(plan)">取消</button>
-            <button ion-button small *ngIf="plan.can_reapply" (click)="reapply(plan);">重新报名</button>
+            <button ion-button small [disabled]="plan.total_count <= plan.joined_count" *ngIf="plan.can_reapply"
+              (click)="reapply(plan);">重新报名</button>
           </ion-note>
         </ion-item>
       </ion-list>
     </div>
-    <div class="splitor"></div>
-    <div class="contacts job-box">
-      <h2 class="title">联系领队</h2>
+    <div class="splitor" *ngIf="job.channels.length > 0"></div>
+    <div class="contacts job-box" *ngIf="job.channels.length > 0">
+      <h2 class="title">工作咨询</h2>
+      <ion-list>
+        <ion-item *ngFor="let contact of job.channels">
+          {{contact.name}}
+          <span class="phone-btn" item-right tappable (click)="callPhone(contact.mobile);">
+            <ion-icon name="ios-call-outline"></ion-icon>
+          </span>
+        </ion-item>
+      </ion-list>
+    </div>
+    <div class="splitor" *ngIf="job.contacts.length > 0"></div>
+    <div class="contacts job-box" *ngIf="job.contacts.length > 0">
+      <h2 class="title">到场签到联系</h2>
       <ion-list>
         <ion-item *ngFor="let contact of job.contacts">
           {{contact.name}}
