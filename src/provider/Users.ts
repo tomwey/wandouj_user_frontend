@@ -205,7 +205,11 @@ export class Users {
             this.token().then(token => {
                 // params['token'] = token;
                 this.api.POST('gwc/apply/' + action,
-                    { token: token, job_id: job_id, work_date: work_date }, "正在提交", true)
+                    {
+                        token: token, job_id: job_id,
+                        work_date: work_date,
+                        key: Utils.getQueryString("key")
+                    }, "正在提交", true)
                     .then(res => {
                         resolve(res);
                     })
