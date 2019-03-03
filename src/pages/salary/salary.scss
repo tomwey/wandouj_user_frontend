@@ -57,11 +57,13 @@ page-salary {
             font-size: 12px;
         }
 
-        .pay-time {
-            margin-top: 10px;
-        }
+        
         .pay-time,.pay-account {
             font-size: 12px;
+
+            margin: 0;
+            padding: 0;
+            line-height: 14px;
             
             .label {
                 color: #888;
@@ -72,6 +74,11 @@ page-salary {
             .value {
                 color: #333;
             }
+        }
+
+        .pay-time {
+            margin-top: 8px;
+            // margin-bottom: 10px;
         }
 
         .money {
@@ -93,6 +100,20 @@ page-salary {
         .comp-name {
             font-size: 12px;
             color: #888;
+        }
+
+        .job-info,.check-time {
+            font-size: 12px;
+            color: #888;
+            margin: 0;
+            padding: 0;
+            line-height: 12px;
+            margin-top: 8px;
+        }
+
+        .check-time {
+            border: 0.55px dashed #eee;
+            padding: 5px;
         }
     }
 

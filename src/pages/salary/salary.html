@@ -46,11 +46,17 @@
 
   <div class="salary-data">
 
-    <virtual-scroller #scroll [items]="salaryData" [childHeight]="180">
+    <virtual-scroller #scroll [items]="salaryData" [childHeight]="258">
       <ion-card *ngFor="let salary of scroll.viewPortItems" class="salary-item">
         <ion-item>
           <p class="salary-id">流水号&nbsp;{{salary.id}}</p>
-          <h2 class="title" text-wrap>{{salary.title}} [{{salary.project_name}}]</h2>
+          <h2 class="title" text-wrap>{{salary.title}}</h2>
+          <p class="job-info">「{{salary.project_name}}」{{salary.job_name}}</p>
+          <p class="check-time">
+            签到时间: {{salary.checkin_time}}<br>
+            签退时间: {{salary.checkout_time}}<br>
+            工作时长: {{salary.work_length}}
+          </p>
           <p class="pay-time">
             <span class="label">{{salary.pay_time ? '确认发放时间:' : '申请发放时间:'}}</span>
             <span class="value">
@@ -60,6 +66,7 @@
             <span class="label">支付宝账号:</span>
             <span class="value">{{salary.pay_account}}&emsp;{{salary.pay_name}}</span>
           </p>
+
           <ion-note item-right style="text-align:right;">
             <p class="money"><span class="unit">¥</span>{{salary.money}}</p>
             <ion-badge color="{{salary.pay_time ? 'primary' : 'danger'}}">{{salary.pay_time ? '已发放' : '待发放'}}
