@@ -76,7 +76,7 @@ export class LoginPage {
 
     this.users.Login(mobile, code)
       .then(data => {
-        console.log(data);
+        // console.log(data);
         // this.checkProfile();
         if (!data['pid']) {
           this.app.getRootNavs()[0].setRoot('ProfilePage');

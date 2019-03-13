@@ -15,7 +15,7 @@ import { LoginPage } from '../pages/login/login';
   for more info on providers and Angular 2 DI.
 */
 // 正式服务器和账号
-const API_HOST: string = "http://jobs.afterwind.cn/api/v1";
+const API_HOST: string = "http://b.wandou.work/api/v1";
 // const API_KEY: string = "4d7295cda1e6dc65dfcf4466db008a8f";
 // const GWC_API_KEY: string = "63a2cc918b179eae4b2859e36b501afd";
 
@@ -207,7 +207,7 @@ export class ApiService {
   // 处理请求成功的回调
   private handleSuccess(resp: Response): any {
     let body = resp.json();
-    console.log(`result: ${JSON.stringify(body)}`);
+    // console.log(`result: ${JSON.stringify(body)}`);
     if (body.code == 0) {
       let rd: ResultData = { code: 0, total: body.total, data: body.data || {} };
       return rd;
