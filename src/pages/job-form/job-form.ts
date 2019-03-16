@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, Content, Events, ModalController, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Content, Events, ModalController } from 'ionic-angular';
 import { iOSFixedScrollFreeze } from '../../provider/iOSFixedScrollFreeze';
 import { Users } from '../../provider/Users';
 import { Tools } from '../../provider/Tools';
@@ -108,7 +108,7 @@ export class JobFormPage {
   }
 
   controlSelected(control) {
-    console.log(control);
+    // console.log(control);
     if (control.id == "project") {
       this.users.GetProjects()
         .then(data => {
@@ -123,12 +123,12 @@ export class JobFormPage {
             title: '选择兼职项目', data: temp
           });
           modal.onDidDismiss((res) => {
-            console.log(res);
+            // console.log(res);
             if (!res) return;
 
             // this.selectedItems = res;
             if (res.length > 0) {
-              console.log(res[0]);
+              // console.log(res[0]);
               control.value = res[0];
             }
           });
@@ -151,7 +151,7 @@ export class JobFormPage {
             title: '选择价格类型', data: temp
           });
           modal.onDidDismiss((res) => {
-            console.log(res);
+            // console.log(res);
             if (!res) return;
             // control.value = res;
             // this.selectedItems = res;
@@ -178,7 +178,7 @@ export class JobFormPage {
             title: '选择代理提成计算方式', data: temp
           });
           modal.onDidDismiss((res) => {
-            console.log(res);
+            // console.log(res);
             if (!res) return;
             // control.value = res;
 
@@ -206,7 +206,7 @@ export class JobFormPage {
             title: '选择签到联系人', data: temp, isSingle: '0'
           });
           modal.onDidDismiss((res) => {
-            console.log(res);
+            // console.log(res);
             if (!res) return;
 
             // this.selectedItems = res;
@@ -232,7 +232,7 @@ export class JobFormPage {
             title: '选择一级代理人', data: temp, isSingle: '0'
           });
           modal.onDidDismiss((res) => {
-            console.log(res);
+            // console.log(res);
             if (!res) return;
 
             // this.selectedItems = res;
@@ -345,7 +345,7 @@ export class JobFormPage {
 
     this.users.SaveJob({ id: id, payload: JSON.stringify(params) })
       .then(data => {
-        const obj = data['data'];
+        // const obj = data['data'];
         this.tools.showToast("保存成功");
         if (!id) {
           // 新建

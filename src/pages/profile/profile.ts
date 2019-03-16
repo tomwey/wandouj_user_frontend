@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, App, ModalController, Events } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, Events } from 'ionic-angular';
 import { Users } from '../../provider/Users';
 import { Tools } from '../../provider/Tools';
-import { TabsPage } from '../tabs/tabs';
+// import { TabsPage } from '../tabs/tabs';
 
 /**
  * Generated class for the ProfilePage page.
@@ -101,7 +101,7 @@ export class ProfilePage {
   constructor(public navCtrl: NavController,
     private users: Users,
     private tools: Tools,
-    private app: App,
+    // private app: App,
     private events: Events,
     private modalCtrl: ModalController,
     public navParams: NavParams) {
@@ -181,10 +181,11 @@ export class ProfilePage {
         // this.tools.showToast("保存成功");
         if (this.profile) {
           this.events.publish("reloadprofile");
-          this.navCtrl.pop();
-        } else {
-          this.app.getRootNavs()[0].setRoot(TabsPage);
         }
+        this.navCtrl.pop();
+        // } else {
+        //   this.app.getRootNavs()[0].setRoot(TabsPage);
+        // }
       })
       .catch(error => {
         this.tools.showToast(error.message || "保存失败了，请重试");

@@ -20,6 +20,8 @@ export class JobDetailPage {
 
   job: any = null;
 
+  // hasProfile: boolean = false;
+
   @ViewChild(Content) content: Content;
   constructor(public navCtrl: NavController,
     private users: Users,
@@ -89,8 +91,9 @@ export class JobDetailPage {
     // this.navCtrl.push('WorkMapPage', { address: job.address });
     // http://apis.map.qq.com/uri/v1/marker?marker=coord:30.595810,103.912830;title:渔虾跳主题餐吧;addr: 城南优品道广场星光广场一楼
     // window.open("https://uri.amap.com/marker?position=经度,纬度&name=所在的位置名称");
-    window.open(`https://uri.amap.com/marker?position=${job.location}&name=${encodeURI(job.address)}`);
+    // window.open(`https://uri.amap.com/marker?position=${job.location}&name=${encodeURI(job.address)}`);
     // window.open("http://api.map.baidu.com/marker?location=30.694057,103.945093&title=&output=html")
+    this.navCtrl.push('BrowserPage', { title: "位置信息", url: `https://uri.amap.com/marker?position=${job.location}&name=${encodeURI(job.address)}` })
   }
 
   reapply(plan) {
@@ -110,7 +113,13 @@ export class JobDetailPage {
         }
       })
       .catch(error => {
-        this.tools.showToast(error.message || "提交出错了，请重试！");
+        if (error.code === 5003) {
+          this.tools.showToast("资料未完善，不能报名");
+          this.navCtrl.push("ProfilePage");
+        } else {
+          this.tools.showToast(error.message || "提交出错了，请重试！");
+        }
+
       });
   }
 

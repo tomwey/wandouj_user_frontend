@@ -31,6 +31,8 @@ export class HomePage {
 
   currentDate: any = null;
 
+  hasProfile: boolean = false;
+
   // @ViewChild('slides') slides: Slides;
   @ViewChild(Content) content: Content;
 
@@ -67,9 +69,11 @@ export class HomePage {
           this.my_jobs = result.my_jobs;
           this.jobs = result.jobs;
           this.jobDates = result.job_dates;
-          if (!result.has_profile) {
-            this.app.getRootNavs()[0].setRoot("ProfilePage");
-          }
+
+          this.hasProfile = result.has_profile;
+          // if (!result.has_profile) {
+          //   this.app.getRootNavs()[0].setRoot("ProfilePage");
+          // }
           resolve();
         })
         .catch(error => {
@@ -103,7 +107,8 @@ export class HomePage {
     this.app.getRootNavs()[0].push('JobDetailPage', {
       job_id: job.id, reload: () => {
         this.loadHomeData(null);
-      }
+      },
+      hasProfile: this.hasProfile
     });
   }
 

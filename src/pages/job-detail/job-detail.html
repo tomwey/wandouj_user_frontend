@@ -48,8 +48,8 @@
           <ion-note item-right>
             <!-- <span class="state">待审核</span> -->
             <span class="state state-{{plan.state}}" *ngIf="!!plan.state">{{plan.state_name}}</span>
-            <button ion-button small [disabled]="plan.total_count <= plan.joined_count" (click)="commit(plan);"
-              *ngIf="!plan.state" [disabled]="!plan.opened">报名</button>
+            <button ion-button small [disabled]="!plan.opened || plan.total_count <= plan.joined_count"
+              (click)="commit(plan);" *ngIf="!plan.state">报名</button>
             <button ion-button small color="danger" *ngIf="plan.can_cancel" (click)="cancel(plan)">取消</button>
             <button ion-button small [disabled]="plan.total_count <= plan.joined_count" *ngIf="plan.can_reapply"
               (click)="reapply(plan);">重新报名</button>
