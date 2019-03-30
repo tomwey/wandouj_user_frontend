@@ -30,6 +30,8 @@ export class LoginPage {
     password: ''
   };
 
+  loading: boolean = false;
+
   controls: any = [
     {
       id: 'mobile',
@@ -74,8 +76,14 @@ export class LoginPage {
     const mobile = this.controls[0].value;
     const code = this.controls[1].value;
 
+    if (this.loading) return;
+
+    this.loading = true;
+
     this.users.Login(mobile, code)
       .then(data => {
+
+        this.loading = false;
         // console.log(data);
         // this.checkProfile();
         // if (!data['pid']) {
@@ -85,6 +93,8 @@ export class LoginPage {
         // }
       })
       .catch(error => {
+        this.loading = false;
+
         this.tools.showToast(error);
       });
   }

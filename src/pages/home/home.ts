@@ -49,8 +49,9 @@ export class HomePage {
     // console.log('ionViewDidLoad HomePage');
     this.iosFixed.fixedScrollFreeze(this.content);
 
-    this.loadHomeData();
-
+    setTimeout(() => {
+      this.loadHomeData();
+    }, 200);
     // console.log(new Date().getDay());
   }
 
